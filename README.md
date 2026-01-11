@@ -4,7 +4,7 @@ A production-ready Tiptap-based document editor with real-time pagination design
 
 ## Live Demo
 
-[To be deployed on Vercel]
+https://opensphere-tiptap-assignment-arnav.vercel.app/
 
 ## Features
 
