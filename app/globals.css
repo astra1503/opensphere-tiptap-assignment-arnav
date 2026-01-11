@@ -1,0 +1,251 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Editor container styles */
+.editor-container:focus-visible {
+  outline: none;
+}
+
+.editor-container p {
+  @apply my-2;
+}
+
+.editor-container p,
+.editor-container table {
+  position: relative;
+}
+
+.editor-container ul,
+.editor-container ol {
+  padding: 0 1rem;
+  margin: 0.25rem 1rem 0.25rem 0.4rem;
+}
+
+.editor-container ul {
+  list-style-type: disc;
+}
+
+.editor-container ol {
+  list-style-type: decimal;
+}
+
+.editor-container ol li p,
+.editor-container ul li p {
+  margin-top: 0.25em;
+  margin-bottom: 0.25em;
+}
+
+.editor-container code {
+  @apply bg-gray-600 text-white px-1 py-0.5 rounded-md mx-0.5;
+}
+
+.editor-container h1 {
+  @apply text-2xl font-bold mb-4;
+}
+
+.editor-container h2 {
+  @apply text-xl font-bold mb-4;
+}
+
+.editor-container h3 {
+  @apply text-lg font-bold mb-3;
+}
+
+.editor-container :first-child {
+  margin-top: 0;
+}
+
+.editor-container blockquote {
+  @apply border-l-2 border-gray-300 pl-4;
+  margin: 1.5rem 0;
+}
+
+/* Pagination styles */
+.with-pagination {
+  background-color: #ffffff !important;
+  /* border-left: 1px solid #e5e5e5 !important;
+  border-right: 1px solid #e5e5e5 !important; */
+}
+
+.with-pagination .page-footer::after {
+  @apply text-gray-500;
+}
+
+.with-pagination .breaker,
+.with-pagination .page-footer,
+.with-pagination .page-header {
+  background-color: #ffffff;
+}
+
+
+.with-pagination .breaker {
+  border-right: 0px solid #e5e5e5 !important;
+}
+
+/* Page break gap styling */
+.pagination-gap {
+  border-left: 0px solid #e5e5e5 !important;
+  border-right: 0px solid #e5e5e5 !important;
+}
+
+/* Editor content area - pure white background */
+.editor-container {
+  background-color: #ffffff;
+}
+
+.ProseMirror {
+  background-color: #ffffff !important;
+}
+
+/* Print styles */
+@media print {
+  /* 1. US Letter physical page with margins for header/footer */
+  @page {
+    size: 8.5in 11in;
+    margin: 1in 1in 1in 1in;
+  }
+
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    box-sizing: border-box !important;
+  }
+
+  /* 2. Hide pagination structure completely */
+  [data-pagination],
+  .page-break,
+  .pagination-gap,
+  .breaker,
+  .page,
+  .page-header,
+  .first-page-header,
+  .page-footer {
+    display: none !important;
+  }
+
+  /* Remove all styling from pagination wrapper */
+  .with-pagination {
+    all: unset !important;
+    display: block !important;
+  }
+
+  /* 3. Reset app shell - remove ALL spacing */
+  html,
+  body,
+  main,
+  #printableArea,
+  .editor-container {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    max-width: none !important;
+    background: white !important;
+    overflow: visible !important;
+  }
+
+  /* 4. Hide toolbar */
+  .toolbar-container {
+    display: none !important;
+  }
+
+  /* 5. Match editor typography exactly */
+  body {
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+    font-size: 16px !important;
+    line-height: 1.5 !important;
+    color: #000 !important;
+  }
+
+  /* 6. Reset ProseMirror but keep display */
+  .ProseMirror {
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* 7. Match editor paragraph styles */
+  .ProseMirror p,
+  .editor-container p {
+    margin-top: 0.5rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  .ProseMirror > *:first-child,
+  .editor-container :first-child {
+    margin-top: 0 !important;
+  }
+
+  /* 8. Match editor heading styles (same as screen) */
+  .ProseMirror h1,
+  .editor-container h1 {
+    font-size: 1.5rem !important;
+    font-weight: bold !important;
+    margin-bottom: 1rem !important;
+    break-after: avoid !important;
+  }
+
+  .ProseMirror h2,
+  .editor-container h2 {
+    font-size: 1.25rem !important;
+    font-weight: bold !important;
+    margin-bottom: 1rem !important;
+    break-after: avoid !important;
+  }
+
+  .ProseMirror h3,
+  .editor-container h3 {
+    font-size: 1.125rem !important;
+    font-weight: bold !important;
+    margin-bottom: 0.75rem !important;
+    break-after: avoid !important;
+  }
+
+  /* 9. Match editor list styles */
+  .ProseMirror ul,
+  .editor-container ul {
+    padding-left: 1rem !important;
+    margin: 0.25rem 1rem 0.25rem 0.4rem !important;
+    list-style-type: disc !important;
+  }
+
+  .ProseMirror ol,
+  .editor-container ol {
+    padding-left: 1rem !important;
+    margin: 0.25rem 1rem 0.25rem 0.4rem !important;
+    list-style-type: decimal !important;
+  }
+
+  .ProseMirror ul li p,
+  .ProseMirror ol li p,
+  .editor-container ul li p,
+  .editor-container ol li p {
+    margin-top: 0.25em !important;
+    margin-bottom: 0.25em !important;
+  }
+
+  /* 10. Match editor blockquote styles */
+  .ProseMirror blockquote,
+  .editor-container blockquote {
+    border-left: 2px solid #d1d5db !important;
+    padding-left: 1rem !important;
+    margin: 1.5rem 0 !important;
+  }
+
+  /* 11. Smart page breaking */
+  h1, h2, h3 {
+    break-after: avoid !important;
+    page-break-after: avoid !important;
+  }
+
+  p, li {
+    orphans: 2;
+    widows: 2;
+  }
+}
+
+
+/* Toolbar styles */
+.toolbar-container {
+  @apply sticky top-0 z-10 bg-white;
+}
